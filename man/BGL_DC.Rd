@@ -39,14 +39,14 @@ Precision matrix of the random coefficients in the weighted sum of basis functio
 Estimates the precision matrix from the basis graphical lasso model.
 }
 \details{
-This is the DC algorithm suggested in the paper and is the workhorse of the package. It uses the \code{QUIC} algorithm to solve the inner graphical lasso problem which arises after linearizing all concave functions w.r.t Q in the negative log likelihood. D is the covariance matrix of the additive error term epsilon in the model formulation; in the paper \eqn{D = \tau^2 I}. The package does not estimate non-identity multiple of D but we include the more general version for possible future research.
+This is the DC algorithm suggested in the paper and is the workhorse of the package.
+ It uses the \code{glasso} algorithm to solve the inner graphical lasso problem which arises after linearizing all concave functions w.r.t Q in the negative log likelihood. D is the covariance matrix of the additive error term epsilon in the model formulation; in the paper \eqn{D = \tau^2 I}. The package does not estimate non-identity multiple of D but we include the more general version for possible future research.
 }
 \examples{
 basis.setup <- BGLBasisSetup(y=tmin$data,locs=tmin$lon.lat.proj,basis="LatticeKrig", 
      crossvalidation=FALSE,NC=20,nlevel=1)
 Phi_Phi <- basis.setup$Phi_Phi
 Phi_S_Phi <- basis.setup$Phi_S_Phi
-tau_sq <- 2
 lambda <- matrix(10,nrow=dim(Phi_Phi)[1],ncol=dim(Phi_Phi)[1])
 diag(lambda) <- 0
 BGLguess <- BGL_DC(lambda=lambda,Phi_Dinv_Phi=Phi_Phi/tau_sq,

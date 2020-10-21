@@ -4,7 +4,7 @@
 #'
 #' @docType package
 #' @name BasisGraphicalLasso
-#' @import QUIC
+#' @import glasso
 #' @import LatticeKrig
 NULL
 
